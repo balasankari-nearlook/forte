@@ -1990,3 +1990,15 @@
 
   
 })(jQuery);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var menuItems = document.querySelectorAll('.ltn__main-menu ul li a');
+    var currentPath = window.location.pathname;
+    
+    menuItems.forEach(function(item) {
+        if(item.getAttribute('href') === currentPath) {
+            item.classList.add('active-menu');
+        }
+    });
+});
