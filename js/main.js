@@ -2002,3 +2002,96 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+// Get the modal
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user loads the page, open the modal
+window.onload = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('contact-form');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const plotsSelect = document.getElementById('plots');
+    const messageInput = document.getElementById('message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('input', function () {
+        if (nameInput.value.trim() !== '' &&
+            phoneInput.value.trim() !== '' &&
+            plotsSelect.value !== '' &&
+            messageInput.value.trim() !== '') {
+            submitBtn.removeAttribute('disabled');
+        } else {
+            submitBtn.setAttribute('disabled', 'disabled');
+        }
+    });
+});
+
+$(document).ready(function() {
+    // Close modal function
+    $(".close").click(function() {
+        $("#myModal").hide();
+    });
+
+    // Function to send WhatsApp message
+    function sendMessageToWhatsApp(name, phone, plots, message) {
+        var phoneNumber = '7373732640'; // Replace with your WhatsApp number
+        var whatsappMessage = encodeURIComponent("Name: " + name + "\nPhone: " + phone + "\nPlots: " + plots + "\nMessage: " + message);
+        var whatsappUrl = 'https://wa.me/' + phoneNumber + '?text=' + whatsappMessage;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Form submission handling
+    $("#contact-form").submit(function(event) {
+        event.preventDefault();
+        
+        var name = $("#name").val();
+        var phone = $("#phone").val();
+        var plots = $("#plots").val();
+        var message = $("#message").val();
+
+        // Validation (you can add more validation as needed)
+        if (name.trim() === '' || phone.trim() === '' || plots.trim() === '') {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Send WhatsApp message
+        sendMessageToWhatsApp(name, phone, plots, message);
+
+        // Optionally, you can reset the form after submission
+        // $("#contact-form")[0].reset();
+
+        // You can also close the modal if needed
+        // $("#myModal").hide();
+    });
+});
