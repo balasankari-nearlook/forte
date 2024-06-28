@@ -7676,8 +7676,8 @@ max-width:40%;}
 .ltn__gallery-filter-menu .active,
 .ltn__tab-menu a.active {
   color: var(--white);
-  background-color: var(--ltn__primary-color);
-  border-color: var(--ltn__primary-color); }
+  background-color: #355803;
+  border-color: #355803; }
 
 .ltn__tab-menu-top-left {
   position: absolute;
